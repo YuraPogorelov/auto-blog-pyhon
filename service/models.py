@@ -33,7 +33,7 @@ class Model(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name='Выбор категории')
     name = models.CharField('Название услуги', max_length=120)
     slug = models.SlugField('URL', max_length=120, default='', unique=True)
-    text = models.TextField('Тексе модели', default='')
+    text = models.TextField('Текст модели', default='')
     header = models.CharField('Заголовок', max_length=240, blank=True, null=True)
     sub_header = models.CharField('Подзаголовок', max_length=240, blank=True, null=True)
     images = models.ImageField('Картинка техники', upload_to='images/', blank=True, null=True)
@@ -46,6 +46,9 @@ class Model(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('service_model_view', kwargs={'category': self.category.slug, 'slug': self.slug})
 
     class Meta:
         verbose_name = 'Модель'
