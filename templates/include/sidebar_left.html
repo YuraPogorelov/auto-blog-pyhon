@@ -34,6 +34,18 @@
             </div>
             <button type="submit" class="btn btn-primary">Перезвонить</button>
         </form>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                <button class="close" data-dismiss="alert">
+                    <small><sup>x</sup></small>
+                </button>
+                <p class="reviews">{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+
     </div>
 
 </div>

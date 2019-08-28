@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+{% load banner %}
 
 <meta name="description" content="{% block description %}{{ service_category.first.category.description }}{% endblock description %}">
 <meta name="keywords" content="{% block keywords %}{{ service_category.first.category.keywords }}{% endblock keywords %}">
 
 <title>{% block title %}{{ service_category.first.category.title }}{% endblock title %}</title>
+
+{% block carousel %}
+    {% banner_tag service_category.first.category %}
+{% endblock %}
 
 {% block content %}
 

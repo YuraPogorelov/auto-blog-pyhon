@@ -11,6 +11,7 @@ class FeedBack(models.Model):
     phone = models.CharField('Телефон', max_length=15)
     description = models.CharField('Описание', max_length=120, blank=True, null=True)
     call_time = models.CharField('Время звонка', max_length=120, blank=True, null=True)
+    active = models.BooleanField('Обработано', default=False)
 
     def __str__(self):
         return self.name
